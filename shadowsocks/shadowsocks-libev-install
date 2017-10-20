@@ -2,9 +2,10 @@
 # author:Labradors
 # url:blog.labradors.work
 apt-get update
-apt-get install wget lsof
+Y | apt-get upgrade
+Y | apt-get install wget lsof
 cd ~
-y | curl -fsSL get.docker.com -o get-docker.sh
+curl -fsSL get.docker.com -o get-docker.sh
 sudo sh get-docker.sh --mirror Aliyun
 systemctl enable docker
 systemctl start docker
