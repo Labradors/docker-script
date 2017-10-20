@@ -1,3 +1,33 @@
 #!/bin/bash
 # author:Labradors
 # url:blog.labradors.work
+apt-get update
+echo Y | apt-get upgrade
+echo Y | apt-get install wget lsof curl lsb_release
+# curl -fsSL get.docker.com -o get-docker.sh
+# sh get-docker.sh --mirror Aliyun
+curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
+add-apt-repository \
+   "deb [arch=amd64] https://download.docker.com/linux/ubuntu \
+   $(lsb_release -cs) \
+   stable"
+apt-get update
+echo Y | apt-get install docker-ce
+# 判断是14还是16
+version = $(lsb_release -sc)
+if [$version == "xenial"]
+then
+    systemctl enable docker
+    systemctl start docker
+	echo "true"
+else
+	service docker start
+fi
+usermod -aG docker $USER
+# 开始下载文件
+mkdir /root/shadowsocksr && cd /root/shadowsocksr
+wget https://raw.githubusercontent.com/shadowsocksr-backup/shadowsocksr/manyuser/apiconfig.py -O userapiconfig.py
+wget https://raw.githubusercontent.com/shadowsocksr-backup/shadowsocksr/manyuser/config.json -O user-config.json
+wget https://raw.githubusercontent.com/shadowsocksr-backup/shadowsocksr/manyuser/mysql.json -O usermysql.json
+
+

@@ -3,7 +3,7 @@
 # url:blog.labradors.work
 apt-get update
 echo Y | apt-get upgrade
-echo Y | apt-get install wget lsof curl
+echo Y | apt-get install wget lsof curl lsb_release
 cd ~
 # curl -fsSL get.docker.com -o get-docker.sh
 # sh get-docker.sh --mirror Aliyun
@@ -13,7 +13,7 @@ add-apt-repository \
    $(lsb_release -cs) \
    stable"
 apt-get update
-apt-get install docker-ce
+echo Y | apt-get install docker-ce
 # 判断是14还是16
 version = $(lsb_release -sc)
 if [$version == "xenial"]
