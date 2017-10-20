@@ -2,8 +2,8 @@
 # author:Labradors
 # url:blog.labradors.work
 apt-get update
-Y | apt-get upgrade
-Y | apt-get install wget lsof curl
+echo Y | apt-get upgrade
+echo Y | apt-get install wget lsof curl
 cd ~
 curl -fsSL get.docker.com -o get-docker.sh
 sudo sh get-docker.sh --mirror Aliyun
