@@ -6,9 +6,17 @@ echo Y | apt-get upgrade
 echo Y | apt-get install wget lsof curl
 cd ~
 curl -fsSL get.docker.com -o get-docker.sh
-sudo sh get-docker.sh --mirror Aliyun
-systemctl enable docker
-systemctl start docker
+sh get-docker.sh --mirror Aliyun
+# 判断是14还是16
+version = $(lsb_release -sc)
+if [$version == "xenial"]
+then
+    systemctl enable docker
+    systemctl start docker
+	echo "true"
+else
+	service docker start
+fi
 usermod -aG docker $USER
 docker pull doublemine/shadowsocks:base
 mkdir .ssmgr && cd .ssmgr
