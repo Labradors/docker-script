@@ -1,0 +1,1 @@
+FROM doublemine/shadowsocks:base

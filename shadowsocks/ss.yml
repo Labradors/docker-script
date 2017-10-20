@@ -1,0 +1,12 @@
+type: s
+empty: false
+
+shadowsocks:
+  address: 127.0.0.1:6001
+  portRange: 50000-51000
+
+manager:
+  address: 0.0.0.0:6001
+  password: '123456'
+
+db: 'db.sqlite'

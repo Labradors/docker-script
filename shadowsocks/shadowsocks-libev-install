@@ -1,0 +1,15 @@
+#!/bin/bash
+# author:Labradors
+# url:blog.labradors.work
+apt-get update
+cd ~
+y | curl -fsSL get.docker.com -o get-docker.sh
+sudo sh get-docker.sh --mirror Aliyun
+systemctl enable docker
+systemctl start docker
+usermod -aG docker $USER
+docker pull doublemine/shadowsocks:base
+mkdir .ssmgr && cd .ssmgr
+
+docker build -t ss-server .
+docker run --rm --net=host --name test ss-server -m aes-256-gcm -v -t 3600 -u -p 6001 --fast-open --obfs tls --dns1 8.8.8.8 --dns2 8.8.4.4
