@@ -10,10 +10,14 @@ cd shadowsocks && \
 pip install cymysql && \
 pip install supervisor && \
 echo_supervisord_conf > /etc/supervisord.conf 
-COPY supervisor /root/shadowsocks/supervisor && \
-chmod a+x /root/shadowsocks/supervisor && \
-bash /root/shadowsocks/supervisor && \
 supervisord -c /etc/supervisord.conf && \
+touch /etc/supervisord/ssr.conf && \
+echo "[program:ssr]" >> /etc/supervisord/ssr.conf && \
+echo "directory=/root/shadowsocks" >> /etc/supervisord/ssr.conf  && \
+echo "command = python server.py" >> /etc/supervisord/ssr.conf && \
+echo "user = root" >> /etc/supervisord/ssr.conf && \
+echo "autostart = true" >> /etc/supervisord/ssr.conf && \
+echo "autoresart = true" >> /etc/supervisord/ssr.conf && \
 chmod +x *.sh && \
 pip install -r requirements.txt && \
 ls -al
