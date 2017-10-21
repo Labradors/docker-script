@@ -9,7 +9,7 @@ git clone -b manyuser https://github.com/esdeathlove/shadowsocks.git && \
 cd shadowsocks && \
 pip install cymysql && \
 pip install supervisor && \
-echo_supervisord_conf > /etc/supervisord.conf 
+echo_supervisord_conf > /etc/supervisord.conf && \
 supervisord -c /etc/supervisord.conf && \
 touch /etc/supervisord/ssr.conf && \
 echo "[program:ssr]" >> /etc/supervisord/ssr.conf && \
