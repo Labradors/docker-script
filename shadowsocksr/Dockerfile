@@ -29,7 +29,7 @@ git clone -b manyuser https://github.com/esdeathlove/shadowsocks.git && \
 cd shadowsocks && \
 pip install cymysql && \
 chmod +x *.sh && \
-ls -al && \
+ls -al
 ONBUILD COPY apiconfig.py userapiconfig.py
 ONBUILD COPY config.py  user-config.json 
 WORKDIR /root/shadowsocks
