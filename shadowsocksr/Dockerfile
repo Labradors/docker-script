@@ -14,4 +14,4 @@ ls -al
 ONBUILD COPY apiconfig.py /root/shadowsocks/userapiconfig.py
 ONBUILD COPY config.json  /root/shadowsocks/user-config.json 
 WORKDIR /root/shadowsocks
-ENTRYPOINT ["python","server.py"]
+ENTRYPOINT ["sh","logrun.sh"]
