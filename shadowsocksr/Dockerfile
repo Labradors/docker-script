@@ -2,9 +2,16 @@ FROM willmao/ubuntu-bbr
 MAINTAINER jiangtao103cp@gmail.com
 
 RUN apt-get update && apt-get install -y git \
+										build-essential \
+										wget
 										python-pip \
 										python3-pip && \
 cd /root && \
+wget https://github.com/jedisct1/libsodium/releases/download/1.0.10/libsodium-1.0.10.tar.gz && \
+tar xf libsodium-1.0.10.tar.gz && cd libsodium-1.0.10 && \
+./configure && make -j2 && make install && \
+ldconfig && \
+cd ..  && \
 git clone -b manyuser https://github.com/esdeathlove/shadowsocks.git && \
 cd shadowsocks && \
 pip install cymysql && \
