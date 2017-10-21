@@ -10,7 +10,7 @@ cd shadowsocks && \
 pip install cymysql && \
 pip install supervisor && \
 echo_supervisord_conf > /etc/supervisord.conf 
-ONBUILD COPY supervisor /root/shadowsocks/supervisor && \
+COPY supervisor /root/shadowsocks/supervisor && \
 chmod a+x /root/shadowsocks/supervisor && \
 bash /root/shadowsocks/supervisor && \
 supervisord -c /etc/supervisord.conf && \
