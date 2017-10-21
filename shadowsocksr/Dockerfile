@@ -14,12 +14,12 @@ mkdir /etc/supervisord && \
 echo "[include] > /etc/supervisord.conf" > /etc/supervisord.conf  && \
 echo "files = /etc/supervisord/*.conf" > /etc/supervisord.conf && \
 touch /etc/supervisord/ssr.conf && \
-echo "[program:ssr]" > ssr.conf && \
-echo "directory=/root/shadowsocks" > ssr.conf && \
-echo "command = python server.py" > ssr.conf && \
-echo "user = root" > ssr.conf && \
-echo "autostart = true" > ssr.conf && \
-echo "autoresart = true" > ssr.conf && \
+echo "[program:ssr]" > /etc/supervisord/ssr.conf && \
+echo "directory=/root/shadowsocks" > /etc/supervisord/ssr.conf && \
+echo "command = python server.py" > /etc/supervisord/ssr.conf && \
+echo "user = root" > /etc/supervisord/ssr.conf && \
+echo "autostart = true" > /etc/supervisord/ssr.conf && \
+echo "autoresart = true" > /etc/supervisord/ssr.conf && \
 supervisord -c /etc/supervisord.conf && \
 chmod +x *.sh && \
 pip install -r requirements.txt && \
