@@ -32,4 +32,4 @@ chmod +x *.sh && \
 ls -al 
 ONBUILD COPY apiconfig.py userapiconfig.py
 ONBUILD COPY config.py  user-config.json 
-ENTRYPOINT ["./logrun.sh"]
+ENTRYPOINT ["python","server.py"]
