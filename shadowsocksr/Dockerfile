@@ -1,30 +1,7 @@
 FROM willmao/ubuntu-bbr
 MAINTAINER jiangtao103cp@gmail.com
 
-RUN apt-get update && apt-get install -y .build-deps \
-                                autoconf \
-                                build-base \
-                                git \
-                                libev-dev \
-                                libtool \
-                                linux-headers \
-                                libsodium-dev \
-                                mbedtls-dev \
-                                pcre-dev \
-                                tar \
-                                c-ares-dev  \
-                                openssl-dev \
-                                udns-dev \
-                                automake \
-                                asciidoc \
-								python \
-								python-dev \
-								py-pip \
-								build-base \
-                                xmlto  && \
-								python3  && \
-								python3 -m ensurepip  \
-								
+RUN apt-get update && \			
 cd /root && \
 git clone -b manyuser https://github.com/esdeathlove/shadowsocks.git && \
 cd shadowsocks && \
