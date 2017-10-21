@@ -11,7 +11,7 @@ pip install cymysql && \
 chmod +x *.sh && \
 pip install -r requirements.txt && \
 ls -al
-ONBUILD COPY apiconfig.py /root/shadowsocks/userapiconfig.py
-ONBUILD COPY config.py  /root/shadowsocks/user-config.json 
+ONBUILD COPY ./apiconfig.py /root/shadowsocks/userapiconfig.py
+ONBUILD COPY ./config.py  /root/shadowsocks/user-config.json 
 WORKDIR /root/shadowsocks
 ENTRYPOINT ["python","server.py"]
