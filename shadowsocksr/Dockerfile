@@ -1,18 +1,17 @@
-FROM alpine:3.6
+FROM willmao/ubuntu-bbr
 MAINTAINER jiangtao103cp@gmail.com
 
-RUN set -ex && \
-    apk add --no-cache  .build-deps \
-                        autoconf \
-                        build-base \
-                        git \
-                        libev-dev \
-                        libtool \
-                        linux-headers \
-                        libsodium-dev \
-                        mbedtls-dev \
-                        pcre-dev \
-                        tar \
+RUN apk add --no-cache --virtual .build-deps \
+                                autoconf \
+                                build-base \
+                                git \
+                                libev-dev \
+                                libtool \
+                                linux-headers \
+                                libsodium-dev \
+                                mbedtls-dev \
+                                pcre-dev \
+                                tar \
                                 c-ares-dev  \
                                 openssl-dev \
                                 udns-dev \
@@ -24,11 +23,8 @@ RUN set -ex && \
 								build-base \
                                 xmlto  && \
 								python3  && \
-								python3 -m ensurepip && \
-								rm -r /usr/lib/python*/ensurepip && \
-								pip3 install --upgrade pip setuptools && \
-								if [ ! -e /usr/bin/pip ]; then ln -s pip3 /usr/bin/pip ; fi && \
-								rm -r /root/.cache && \
+								python3 -m ensurepip  \
+								
 cd /root && \
 git clone -b manyuser https://github.com/esdeathlove/shadowsocks.git && \
 cd shadowsocks && \
