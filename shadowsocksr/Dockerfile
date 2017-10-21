@@ -11,7 +11,7 @@ pip install cymysql && \
 pip install supervisor && \
 echo_supervisord_conf > /etc/supervisord.conf && \
 mkdir /etc/supervisord && \
-echo "[include] > /etc/supervisord.conf" > /etc/supervisord.conf  && \
+echo "[include]" > /etc/supervisord.conf  && \
 echo "files = /etc/supervisord/*.conf" > /etc/supervisord.conf && \
 touch /etc/supervisord/ssr.conf && \
 echo "[program:ssr]" > /etc/supervisord/ssr.conf && \
