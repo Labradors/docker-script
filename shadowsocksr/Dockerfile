@@ -3,7 +3,7 @@ MAINTAINER jiangtao103cp@gmail.com
 
 RUN apt-get update && apt-get install -y git \
 										build-essential \
-										wget
+										wget \
 										python-pip \
 										python3-pip && \
 cd /root && \
