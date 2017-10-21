@@ -10,19 +10,17 @@ cd shadowsocks && \
 pip install cymysql && \
 pip install supervisor && \
 echo_supervisord_conf > /etc/supervisord.conf && \
-supervisord -c /etc/supervisord.conf && \
-touch /etc/supervisord/ssr.conf && \
-echo "[program:ssr]" >> /etc/supervisord/ssr.conf && \
-echo "directory=/root/shadowsocks" >> /etc/supervisord/ssr.conf  && \
-echo "command = python server.py" >> /etc/supervisord/ssr.conf && \
-echo "user = root" >> /etc/supervisord/ssr.conf && \
-echo "autostart = true" >> /etc/supervisord/ssr.conf && \
-echo "autoresart = true" >> /etc/supervisord/ssr.conf && \
+echo "[program:ssr]" >> /etc/supervisord.conf && \
+echo "directory=/root/shadowsocks" >> /etc/supervisord.conf  && \
+echo "command = python server.py" >> /etc/supervisord.conf && \
+echo "user = root" >> /etc/supervisord.conf && \
+echo "autostart = true" >> /etc/supervisord.conf && \
+echo "autoresart = true" >> /etc/supervisord.conf && \
 chmod +x *.sh && \
 pip install -r requirements.txt && \
 ls -al
 ONBUILD COPY apiconfig.py /root/shadowsocks/userapiconfig.py
 ONBUILD COPY config.json  /root/shadowsocks/user-config.json 
 WORKDIR /root/shadowsocks
-ENTRYPOINT ["supervisorctl ","update"]
+ENTRYPOINT ["supervisord ","-c","/etc/supervisord.conf"]
 
