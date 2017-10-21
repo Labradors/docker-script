@@ -9,17 +9,10 @@ git clone -b manyuser https://github.com/esdeathlove/shadowsocks.git && \
 cd shadowsocks && \
 pip install cymysql && \
 pip install supervisor && \
-echo_supervisord_conf > /etc/supervisord.conf && \
-mkdir /etc/supervisord && \
-echo "[include]" > /etc/supervisord.conf  && \
-echo "files = /etc/supervisord/*.conf" > /etc/supervisord.conf && \
-touch /etc/supervisord/ssr.conf && \
-echo "[program:ssr]" > /etc/supervisord/ssr.conf && \
-echo "directory=/root/shadowsocks" > /etc/supervisord/ssr.conf && \
-echo "command = python server.py" > /etc/supervisord/ssr.conf && \
-echo "user = root" > /etc/supervisord/ssr.conf && \
-echo "autostart = true" > /etc/supervisord/ssr.conf && \
-echo "autoresart = true" > /etc/supervisord/ssr.conf && \
+echo_supervisord_conf > /etc/supervisord.conf 
+ONBUILD COPY supervisor /root/shadowsocks/supervisor && \
+chmod a+x /root/shadowsocks/supervisor && \
+bash /root/shadowsocks/supervisor && \
 supervisord -c /etc/supervisord.conf && \
 chmod +x *.sh && \
 pip install -r requirements.txt && \
