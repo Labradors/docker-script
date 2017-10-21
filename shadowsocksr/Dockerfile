@@ -23,15 +23,18 @@ RUN set -ex && \
 								py-pip \
 								build-base \
                                 xmlto && \
+								python3 && \
+								python3 -m ensurepip && \
 								
 cd /root && \
 git clone -b manyuser https://github.com/esdeathlove/shadowsocks.git && \
 cd shadowsocks && \
 pip install cymysql && \
 chmod +x *.sh && \
-pip install -r requirements.txt
+pip install -r requirements.txt && \
 ls -al
 ONBUILD COPY apiconfig.py userapiconfig.py
 ONBUILD COPY config.py  user-config.json 
-WORKDIR /root/shadowsocks
+WORKDIR /root/shadowsocks && \
+
 ENTRYPOINT ["python","server.py"]
