@@ -1,7 +1,7 @@
 FROM willmao/ubuntu-bbr
 MAINTAINER jiangtao103cp@gmail.com
 
-RUN apt-get update && \			
+RUN apt-get update && apt-get install -y git \
 cd /root && \
 git clone -b manyuser https://github.com/esdeathlove/shadowsocks.git && \
 cd shadowsocks && \
