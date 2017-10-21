@@ -13,6 +13,5 @@ pip install -r requirements.txt && \
 ls -al
 ONBUILD COPY apiconfig.py userapiconfig.py
 ONBUILD COPY config.py  user-config.json 
-WORKDIR /root/shadowsocks && \
-
+WORKDIR /root/shadowsocks
 ENTRYPOINT ["python","server.py"]
