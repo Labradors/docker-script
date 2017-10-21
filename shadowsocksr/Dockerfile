@@ -1,7 +1,9 @@
 FROM willmao/ubuntu-bbr
 MAINTAINER jiangtao103cp@gmail.com
 
-RUN apt-get update && apt-get install -y git && \
+RUN apt-get update && apt-get install -y git \
+										python-pip \
+										python3-pip && \
 cd /root && \
 git clone -b manyuser https://github.com/esdeathlove/shadowsocks.git && \
 cd shadowsocks && \
