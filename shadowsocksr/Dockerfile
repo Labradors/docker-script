@@ -1,7 +1,7 @@
 FROM willmao/ubuntu-bbr
 MAINTAINER jiangtao103cp@gmail.com
 
-RUN apk add --no-cache --virtual .build-deps \
+RUN apt-get update && apt-get install -y .build-deps \
                                 autoconf \
                                 build-base \
                                 git \
