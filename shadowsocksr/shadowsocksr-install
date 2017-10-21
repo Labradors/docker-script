@@ -30,4 +30,7 @@ wget https://raw.githubusercontent.com/shadowsocksr-backup/shadowsocksr/manyuser
 wget https://raw.githubusercontent.com/shadowsocksr-backup/shadowsocksr/manyuser/config.json -O user-config.json
 wget https://raw.githubusercontent.com/shadowsocksr-backup/shadowsocksr/manyuser/mysql.json -O usermysql.json
 
+wget https://raw.githubusercontent.com/esdeathlove/shadowsocks/manyuser/apiconfig.py
+wget https://raw.githubusercontent.com/esdeathlove/shadowsocks/manyuser/config.json
+
 

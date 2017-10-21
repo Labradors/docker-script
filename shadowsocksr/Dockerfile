@@ -10,12 +10,26 @@ RUN set -ex && \
                                 libtool \
                                 linux-headers \
                                 libsodium-dev \
-cd ~ && \
-git clone -b manyuser https://github.com/Ssrbackup/shadowsocksr.git && \
-cd shadowsocksr && \
-./setup_cymysql.sh
-./initcfg.sh
-ADD userapiconfig.py /root/shadowsocksr/userapiconfig.py
-ADD usermysql.json /root/shadowsocksr/usermysql.json
-ADD user-config.json /root/shadowsocksr/user-config.json
-ENTRYPOINT ["bash","./logrun.sh"]
+                                mbedtls-dev \
+                                pcre-dev \
+                                tar \
+                                c-ares-dev  \
+                                openssl-dev \
+                                udns-dev \
+                                automake \
+                                asciidoc \
+								python \
+								python-dev \
+								py-pip \
+								build-base \
+                                xmlto && \
+								
+cd /root && \
+git clone -b manyuser https://github.com/esdeathlove/shadowsocks.git && \
+cd shadowsocks && \
+pip install cymysql && \
+chmod +x *.sh && \
+ls -al 
+ONBUILD COPY apiconfig.py userapiconfig.py
+ONBUILD COPY config.py  user-config.json 
+ENTRYPOINT ["./logrun.sh"]
