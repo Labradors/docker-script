@@ -22,9 +22,9 @@ RUN set -ex && \
 								python-dev \
 								py-pip \
 								build-base \
-                                xmlto  \
-								python3  \
-								python3 -m ensurepip \
+                                xmlto  && \
+								python3  && \
+								python3 -m ensurepip && \
 								
 cd /root && \
 git clone -b manyuser https://github.com/esdeathlove/shadowsocks.git && \
