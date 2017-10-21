@@ -22,5 +22,5 @@ ls -al
 ONBUILD COPY apiconfig.py /root/shadowsocks/userapiconfig.py
 ONBUILD COPY config.json  /root/shadowsocks/user-config.json 
 WORKDIR /root/shadowsocks
-ENTRYPOINT ["supervisord ","-c","/etc/supervisord.conf"]
+ENTRYPOINT ["/usr/bin/supervisord ","-c","/etc/supervisord.conf"]
 
