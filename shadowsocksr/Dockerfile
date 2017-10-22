@@ -3,6 +3,7 @@ MAINTAINER jiangtao103cp@gmail.com
 
 RUN apt-get update && apt-get install -y git \
 										build-essential \
+										sudo \
 										wget \
 										python-pip \
 										python-m2crypto \
@@ -10,12 +11,14 @@ RUN apt-get update && apt-get install -y git \
 										libevent-dev \
 										python-setuptools \
 										python-gevent \
-										python3-pip && \
+										python3-pip 
+RUN useradd -m docker && echo "docker:docker" | chpasswd && adduser docker sudo && \
 cd /root && \
 wget https://github.com/jedisct1/libsodium/releases/download/1.0.10/libsodium-1.0.10.tar.gz && \
 tar xf libsodium-1.0.10.tar.gz && cd libsodium-1.0.10 && \
 ./configure && make -j2 && make install && \
 ldconfig && \
+sudo su 
 echo "fs.file-max = 1024000" >> /etc/sysctl.conf && \
 echo "net.core.rmem_max = 67108864" >> /etc/sysctl.conf && \
 echo "net.core.wmem_max = 67108864" >> /etc/sysctl.conf && \
