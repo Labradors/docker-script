@@ -1,12 +1,25 @@
 #!/bin/bash
 # author:Labradors
 # url:blog.labradors.work
+installss(){
+	usermod -aG docker $USER
+	docker pull doublemine/shadowsocks:base
+	mkdir .ssmgr && cd .ssmgr
+	wget https://raw.githubusercontent.com/Labradors/Script/master/shadowsocks/ss.yml
+	wget https://raw.githubusercontent.com/Labradors/Script/master/shadowsocks/Dockerfile
+	docker build -t ss-server .
+	docker run --rm --net=host --name test ss-server -m aes-256-gcm -v -t 3600 -u -p 6001 --fast-open --obfs tls --dns1 8.8.8.8 --dns2 8.8.4.4
+}
 apt-get update
 echo Y | apt-get upgrade
 echo Y | apt-get install wget lsof curl lsb_release
 cd ~
 # curl -fsSL get.docker.com -o get-docker.sh
 # sh get-docker.sh --mirror Aliyun
+if [ -n `which docker`]; then
+ echo 'docker is ok.'
+ installss
+else
 curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
 add-apt-repository \
    "deb [arch=amd64] https://download.docker.com/linux/ubuntu \
@@ -24,10 +37,6 @@ then
 else
 	service docker start
 fi
-usermod -aG docker $USER
-docker pull doublemine/shadowsocks:base
-mkdir .ssmgr && cd .ssmgr
-wget https://raw.githubusercontent.com/Labradors/Script/master/shadowsocks/ss.yml
-wget https://raw.githubusercontent.com/Labradors/Script/master/shadowsocks/Dockerfile
-docker build -t ss-server .
-docker run --rm --net=host --name test ss-server -m aes-256-gcm -v -t 3600 -u -p 6001 --fast-open --obfs tls --dns1 8.8.8.8 --dns2 8.8.4.4
+installss
+echo 'finsh'
+fi
