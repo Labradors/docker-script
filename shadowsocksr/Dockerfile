@@ -11,7 +11,7 @@ RUN apt-get update && apt-get install -y git \
 										libevent-dev \
 										python-setuptools \
 										python-gevent \
-										python3-pip 
+										python3-pip && \
 # RUN useradd -m docker && echo "docker:docker" | chpasswd && adduser docker sudo && \
 cd /root && \
 wget https://github.com/jedisct1/libsodium/releases/download/1.0.10/libsodium-1.0.10.tar.gz && \
