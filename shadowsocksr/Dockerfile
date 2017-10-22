@@ -18,7 +18,7 @@ wget https://github.com/jedisct1/libsodium/releases/download/1.0.10/libsodium-1.
 tar xf libsodium-1.0.10.tar.gz && cd libsodium-1.0.10 && \
 ./configure && make -j2 && make install && \
 ldconfig && \
-sudo su 
+sudo su && \
 echo "fs.file-max = 1024000" >> /etc/sysctl.conf && \
 echo "net.core.rmem_max = 67108864" >> /etc/sysctl.conf && \
 echo "net.core.wmem_max = 67108864" >> /etc/sysctl.conf && \
