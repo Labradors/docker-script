@@ -1,4 +1,4 @@
-FROM debian:latest
+FROM willmao/ubuntu-bbr
 MAINTAINER jiangtao103cp@gmail.com
 #Download applications
 RUN apt-get update \
