@@ -1,4 +1,4 @@
-FROM willmao/ubuntu-bbr
+FROM labradors/magic-bbr
 MAINTAINER jiangtao103cp@gmail.com
 
 RUN apt-get update && apt-get install -y git \
