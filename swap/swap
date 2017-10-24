@@ -1,0 +1,12 @@
+#!/bin/bash
+# author:Labradors
+# url:blog.labradors.works
+fallocate -l 2G /swap
+chmod 600 /swap
+mkswap /swap
+swapon /swap
+cp /etc/fstab /etc/fstab.bak
+echo '/swap none swap sw 0 0' | sudo tee -a /etc/fstab
+echo 'vm.swappiness = 10' >> /etc/sysctl.conf
+echo 'vm.vfs_cache_pressure = 50' >> /etc/sysctl.conf
+sysctl -p

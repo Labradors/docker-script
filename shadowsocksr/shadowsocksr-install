@@ -38,6 +38,8 @@ fi
  echo 'finish'
 fi
 
+# docker run --privileged -d --net=host --name ssr-server ssr-server
+
 
 
 
